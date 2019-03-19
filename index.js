@@ -20,7 +20,8 @@ const getAccessToken = () => axios({
 
 const echo = token => axios({
   method: 'GET',
-  url: 'https://stg.api.thoughtworks.net/echo',
+  url: 'https://stg.api.thoughtworks.net/echo',//use this when you need to know the status of Platform API server
+  // url: 'https://stg.api.thoughtworks.net/timecard-service/timecards?startDate=2019-02-11&endDate=2019-02-24&payrollCountry=United%20States&page=1',//use this when you need to know the Time card API service is working or not
   headers: {
     Authorization: `Bearer ${token}`
   }
@@ -28,6 +29,6 @@ const echo = token => axios({
 .then(response => response.data);
 
 getAccessToken()
-.then(echo)
+.then(echo) // comment this line if you need to get the Bearer token displayed on screen
 .then(console.log)
 .catch(console.error);
